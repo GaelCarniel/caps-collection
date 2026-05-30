@@ -89,6 +89,11 @@
     .modal-qty { font-size: .85rem; color: var(--muted); }
     .modal-close { display: block; width: 100%; margin-top: 1.2rem; background: var(--surface2); border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: .65rem; font-family: inherit; font-size: .88rem; cursor: pointer; transition: background var(--trans); }
     .modal-close:hover { background: var(--border); }
+    .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.5); border: none; color: #fff; font-size: 1.8rem; width: 40px; height: 60px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background var(--trans); z-index: 10; }
+    .modal-nav:hover { background: rgba(0,0,0,.8); }
+    .modal-nav-prev { left: 0; border-radius: 0 6px 6px 0; }
+    .modal-nav-next { right: 0; border-radius: 6px 0 0 6px; }
+    .modal { position: relative; }
     footer { text-align: center; padding: 2.5rem 1rem; color: var(--muted); font-size: .78rem; border-top: 1px solid var(--border); margin-top: 3rem; }
     @media (max-width: 480px) { .gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); } .result-meta { display: none; } }
   </style>
@@ -117,6 +122,7 @@
       <button class="toggle-btn" id="dupToggle">
         <span class="dot"></span> Seulement les doubles
       </button>
+      <button class="toggle-btn" id="randomBtn" title="Capsule aléatoire">🎲 Aléatoire</button>
       <span class="result-meta" id="resultMeta"></span>
     </div>
     <div class="gallery" id="gallery"></div>
@@ -125,14 +131,17 @@
 
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal" id="modal">
+      <button class="modal-nav modal-nav-prev" id="modalPrev" aria-label="Précédent">&#8249;</button>
+      <button class="modal-nav modal-nav-next" id="modalNext" aria-label="Suivant">&#8250;</button>
       <div class="modal-img" id="modalImg"></div>
       <div class="modal-info">
         <div class="modal-name" id="modalName"></div>
         <div class="modal-meta">
           <span class="badge" id="modalBadge"></span>
           <span class="modal-qty" id="modalQty"></span>
+          <span class="modal-qty" id="modalCountry"></span>
         </div>
-        <button class="modal-close" id="modalClose">Close</button>
+        <button class="modal-close" id="modalClose">Fermer</button>
       </div>
     </div>
   </div>
@@ -171,15 +180,17 @@
 
     function parseCSV(text) {
       const lines = text.trim().split('\n').filter(l => l.trim());
-      // Skip header row (Nom,Quantité,Type,Photo)
+      // Skip header row (Nom,Quantité,Type,Photo, Pays, Code du Pays)
       return lines.slice(1).map((line, i) => {
-        const [nom, quantite, type, photo] = line.split(';').map(v => v.trim());
+        const [nom, quantite, type, photo, pays, code] = line.split(';').map(v => v.trim());
         return {
           id:       i + 1,
           name:     nom     || '',
           quantity: parseInt(quantite) || 1,
           type:     type    || '',
           image:    photo   || '',
+          country:  pays    || '',
+          country_code: code|| '',
         };
       });
     }
@@ -221,7 +232,7 @@
       const el = document.getElementById('gallery');
       document.getElementById('resultMeta').textContent = `${caps.length} cap${caps.length !== 1 ? 's' : ''}`;
       if (caps.length === 0) {
-        el.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><h3>No caps found</h3><p>Try adjusting your search or filters.</p></div>`;
+        el.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><h3>Aucune capsule trouvée</h3><p>Essayez de modifier vos paramètres de recherche.</p></div>`;
         return;
       }
       el.innerHTML = caps.map((cap, i) => {
@@ -235,7 +246,10 @@
             <div class="card-name" title="${escHtml(cap.name)}">${escHtml(cap.name)}</div>
             <div class="card-footer">
               <span class="badge badge-type" style="--badge-color: ${typeColorMap[cap.type] || '#d4a843'}">${cap.type}</span>
-              <span class="qty-badge ${qty > 1 ? 'many' : ''}">×${qty}</span>
+              <span class="qty-badge ${qty > 1 ? 'many' : ''}">
+                ${cap.country_code ? `<span title="${cap.country_code}">${countryFlag(cap.country_code)}</span>` : ''}
+                ×${qty}
+              </span>
             </div>
           </div>
         </div>`;
@@ -246,15 +260,22 @@
       });
     }
 
+    // ── Navigation state ──────────────────────────────────────────
+    let currentModalId = null;
+
     function openModal(id) {
       const cap = allCaps.find(c => c.id === id);
       if (!cap) return;
+      currentModalId = id;
       const qty = cap.quantity || 1;
       document.getElementById('modalName').textContent = cap.name;
       document.getElementById('modalBadge').className = `badge badge-type`;
       document.getElementById('modalBadge').style.setProperty('--badge-color', typeColorMap[cap.type] || '#d4a843');
       document.getElementById('modalBadge').textContent = cap.type;
-      document.getElementById('modalQty').textContent = `${qty} exemplaire(s)${qty !== 1 ? 's' : ''}`;
+      document.getElementById('modalQty').textContent = `${qty} exemplaire${qty !== 1 ? 's' : ''}`;
+      const modalCountry = document.getElementById('modalCountry');
+      modalCountry.textContent = cap.country_code ? `${countryFlag(cap.country_code)} ${cap.country}` : '';
+      modalCountry.style.display = cap.country_code ? '' : 'none';
       document.getElementById('modalImg').innerHTML = cap.image
         ? `<img src="public/images/${cap.image}" alt="${escHtml(cap.name)}" />`
         : `<span class="placeholder">${typeEmoji(cap.type)}</span>`;
@@ -262,14 +283,49 @@
       document.body.style.overflow = 'hidden';
     }
 
+    function navigateModal(direction) {
+      const filtered = applyFilters();
+      if (filtered.length === 0) return;
+      const currentIndex = filtered.findIndex(c => c.id === currentModalId);
+      const nextIndex = (currentIndex + direction + filtered.length) % filtered.length;
+      openModal(filtered[nextIndex].id);
+    }
+
     function closeModal() {
       document.getElementById('modalBackdrop').classList.remove('open');
       document.body.style.overflow = '';
+      currentModalId = null;
     }
 
     document.getElementById('modalClose').addEventListener('click', closeModal);
     document.getElementById('modalBackdrop').addEventListener('click', e => { if (e.target === document.getElementById('modalBackdrop')) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      const isOpen = document.getElementById('modalBackdrop').classList.contains('open');
+      if (e.key === 'Escape') { closeModal(); return; }
+      if (!isOpen) return;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); navigateModal(1); }
+      if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); navigateModal(-1); }
+    });
+
+    // Swipe on mobile
+    let touchStartX = 0;
+    document.getElementById('modal').addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    document.getElementById('modal').addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) navigateModal(diff > 0 ? 1 : -1);
+    }, { passive: true });
+
+    // Random button
+    document.getElementById('randomBtn').addEventListener('click', () => {
+      const filtered = applyFilters();
+      if (filtered.length === 0) return;
+      openModal(filtered[Math.floor(Math.random() * filtered.length)].id);
+    });
+
+    document.getElementById('modalPrev').addEventListener('click', e => { e.stopPropagation(); navigateModal(-1); });
+    document.getElementById('modalNext').addEventListener('click', e => { e.stopPropagation(); navigateModal(1); });
 
     document.getElementById('search').addEventListener('input', e => { state.query = e.target.value; renderGallery(); });
     document.getElementById('typeFilter').addEventListener('change', e => { state.type = e.target.value; renderGallery(); });
@@ -288,6 +344,10 @@
 
     function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
     function typeEmoji() { return '🪙'; }
+    function countryFlag(code) {
+      // Converts ISO 3166-1 alpha-2 code (e.g. "FR") to flag emoji
+      return code.toUpperCase().replace(/./g, c => String.fromCodePoint(0x1F1E6 - 65 + c.charCodeAt(0)));
+    }
 
     document.getElementById('footerYear').textContent = new Date().getFullYear();
     loadData();
