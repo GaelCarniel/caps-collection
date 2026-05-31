@@ -62,8 +62,8 @@ Updates: just push to `main` — rebuilds in ~30 seconds.
 
 ## Image tips
 
-- Square photos, ~400×400 px
-- Name files: `0001.jpg`, `0002.jpg`, etc.
+- Standardized Photos
+- Name files: `name_beer.jpg`
 - JPG, PNG, or WebP all work
 
 ---
