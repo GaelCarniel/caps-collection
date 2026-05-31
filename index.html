@@ -179,7 +179,11 @@
 
       // Populate country dropdown
       const countrySelect = document.getElementById('countryFilter');
-      const uniqueCountries = [...new Set(allCaps.map(c => c.country_code).filter(c => c))].sort();
+      const uniqueCountries = [...new Set(allCaps.map(c => c.country_code).filter(c => c))].sort((a, b) => {
+        const nameA = allCaps.find(c => c.country_code === a)?.country || a;
+        const nameB = allCaps.find(c => c.country_code === b)?.country || b;
+        return nameA.localeCompare(nameB, 'fr');
+      });
       uniqueCountries.forEach(code => {
         const opt = document.createElement('option');
         opt.value = code;
