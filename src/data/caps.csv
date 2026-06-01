@@ -1,7 +1,7 @@
 Nom;Quantité;Type;Photo;Pays;Pays_code
 Heineken;32;Bière;heineken_original.jpg;Pays-Bas;NL
 Leffe;7;Bière;leffe_original.jpg;Belgique;BE
-Leffe 0.0;1;Bière;leffe_zero.jpg;Belgique;BE
+Leffe 0.0%;1;Bière;leffe_zero.jpg;Belgique;BE
 Grimbergen;6;Bière;grimbergen_original.jpg;Belgique;BE
 Grimbergen fruits rouges;6;Bière;grimbergen_rouge.jpg;Belgique;BE
 Grimbergen cerise;3;Bière;grimbergen_cerise.jpg;Belgique;BE
@@ -36,3 +36,5 @@ La mordue;1;Cidre;la_mordue.jpg;France;FR
 Boylan;1;Soda;boylan.jpg;Irlande;IE
 L’excuse de Mauvezin (Gers);1;Bière;lexcuse_mauvezin.jpg;France;FR
 Birra Moretti bronze;1;Bière;birra_moretti_bronze.jpg;Italie;IT
+Ninkasi Blanche;1;Bière;ninkasi_blanche_turquoise.jpg;France;FR
+Perlembourg 0.0%;2;Bière;perlembourg_zero.jpg;France;FR
