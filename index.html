@@ -154,6 +154,25 @@
     let typeColorMap = {};
     let state = { query: '', type: '', sort: 'name-asc', dupsOnly: false, country: '' };
 
+    // Builds a img tag that tries .jpg, then .png, then falls back to missing_caps.jpg
+    /*
+    function imgTag(name, alt, lazy) {
+      const loading = lazy ? ' loading="lazy"' : '';
+      if (!name) return `<img src="public/images/missing_caps.jpg" alt="Image manquante"${loading} />`;
+      return `<img src="public/images/${name}.jpg" alt="${alt}"${loading}
+        onerror="if(this.src.endsWith('.jpg')){this.src='public/images/${name}.png'}else{this.src='public/images/missing_caps.jpg';this.onerror=null}" />`;
+    }
+    */
+
+    function imgTag(name, alt, lazy) {
+      const loading = lazy ? ' loading="lazy"' : '';
+      if (!name) return `<img src="public/images/missing_caps" alt="Image manquante"${loading} />`;     
+      const cleanName = name.replace(/\.(jpg|png)$/i, ''); // Removes .jpg, .jpeg, or .png from the end of the name if present
+      
+      return `<img src="public/images/${cleanName}.jpg" alt="${alt}"${loading}
+        onerror="if(this.src.endsWith('.jpg')){this.src='public/images/${cleanName}.png'}else{this.src='public/images/missing_caps.jpg';this.onerror=null}" />`;
+    }
+
     async function loadData() {
       try {
         const res = await fetch('src/data/caps.csv');
@@ -239,7 +258,7 @@
       let caps = [...allCaps];
       if (state.query)    caps = caps.filter(c => c.name.toLowerCase().includes(state.query.toLowerCase()));
       if (state.type)     caps = caps.filter(c => c.type === state.type);
-      if (state.country) caps = caps.filter(c => c.country_code === state.country);
+      if (state.country)  caps = caps.filter(c => c.country_code === state.country);
       if (state.dupsOnly) caps = caps.filter(c => (c.quantity || 1) > 1);
       caps.sort((a, b) => {
         if (state.sort === 'name-asc')  return a.name.localeCompare(b.name);
@@ -261,11 +280,8 @@
       }
       el.innerHTML = caps.map((cap, i) => {
         const qty = cap.quantity || 1;
-        const img = cap.image
-          ? `<img src="public/images/${cap.image}" alt="${escHtml(cap.name)}" loading="lazy" />`
-          : `<img src="public/images/missing_caps.jpg" alt="Image manquante" loading="lazy" />`;
         return `<div class="card" style="animation-delay:${Math.min(i*30,400)}ms" data-id="${cap.id}" role="button" tabindex="0" aria-label="${escHtml(cap.name)}">
-          <div class="card-img">${img}</div>
+          <div class="card-img">${imgTag(cap.image, escHtml(cap.name), true)}</div>
           <div class="card-body">
             <div class="card-name" title="${escHtml(cap.name)}">${escHtml(cap.name)}</div>
             <div class="card-footer">
@@ -301,9 +317,7 @@
       const modalCountry = document.getElementById('modalCountry');
       modalCountry.textContent = cap.country_code ? `${countryFlag(cap.country_code)} ${cap.country}` : '';
       modalCountry.style.display = cap.country_code ? '' : 'none';
-      document.getElementById('modalImg').innerHTML = cap.image
-        ? `<img src="public/images/${cap.image}" alt="${escHtml(cap.name)}" />`
-        : `<img src="public/images/missing_caps.jpg" alt="Image manquante" />`;
+      document.getElementById('modalImg').innerHTML = imgTag(cap.image, escHtml(cap.name), false);
       document.getElementById('modalBackdrop').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
