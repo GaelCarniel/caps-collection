@@ -20,6 +20,7 @@
       --radius:    10px;
       --shadow:    0 4px 24px rgba(0,0,0,.45);
       --trans:     .18s ease;
+      --bg-image: url('public/backgrounds/dark_fabric.jpg');
     }
     [data-theme="light"] {
       --bg:       #f5f0e8;
@@ -29,6 +30,7 @@
       --text:     #1a1714;
       --muted:    #8c8178;
       --shadow:   0 4px 24px rgba(0,0,0,.10);
+      --bg-image: url('public/backgrounds/light_fabric.jpg');
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; transition: background var(--trans), color var(--trans); }
@@ -52,6 +54,33 @@
     select { padding: 0 2rem 0 .85rem; appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b6560'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .7rem center; }
     input[type="search"]:focus, select:focus { border-color: var(--accent); }
     .sort-select { min-width: 148px; }
+    .bg-picker-container { position: relative; display: inline-block; }
+    .bg-preview-window { 
+      display: none; 
+      position: absolute; 
+      top: 45px; 
+      left: 0; 
+      background: var(--surface); 
+      border: 1px solid var(--border); 
+      border-radius: var(--radius); 
+      padding: 0.8rem; 
+      box-shadow: var(--shadow); 
+      z-index: 150; 
+      grid-template-columns: repeat(2, 100px); 
+      gap: 0.6rem; 
+    }
+    .bg-preview-window.show { display: grid; }
+    .bg-option { 
+      cursor: pointer; 
+      border: 2px solid var(--border); 
+      border-radius: 6px; 
+      overflow: hidden; 
+      text-align: center;
+      transition: border-color var(--trans);
+    }
+    .bg-option:hover, .bg-option.active { border-color: var(--accent); }
+    .bg-option-img { width: 100%; aspect-ratio: 1; background-size: cover; background-position: center; }
+    .bg-option-label { font-size: 0.7rem; padding: 0.2rem 0; color: var(--text); background: var(--surface2); }
     .toggle-btn { display: flex; align-items: center; gap: .45rem; background: var(--surface); border: 1px solid var(--border); color: var(--muted); border-radius: var(--radius); padding: 0 .9rem; height: 40px; font-family: inherit; font-size: .85rem; cursor: pointer; white-space: nowrap; transition: border-color var(--trans), color var(--trans), background var(--trans); user-select: none; }
     .toggle-btn .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background var(--trans); }
     .toggle-btn.active { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
@@ -61,8 +90,7 @@
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: transform var(--trans), border-color var(--trans), box-shadow var(--trans); animation: fadeIn .25s ease both; }
     .card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow); }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .card-img { width: 100%; aspect-ratio: 1; background: var(--surface2) url('public/backgrounds/background.jpeg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-
+    .card-img { width: 100%; aspect-ratio: 1; background: var(--surface2) var(--bg-image) center/cover no-repeat; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
     .card:hover .card-img img { transform: scale(1.16);}
     .card-img .placeholder { font-size: 2.8rem; opacity: .18; user-select: none; }
@@ -81,8 +109,22 @@
     .modal-backdrop.open { display: grid; }
     .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; max-width: min(480px, 92vw); width: 100%; overflow: hidden; animation: modalIn .2s ease; }
     @keyframes modalIn { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: scale(1); } }
-    .modal-img { width: 100%; aspect-ratio: 1; background: var(--surface2) url('public/backgrounds/background.jpeg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; }
+    .modal-img { width: 100%; aspect-ratio: 1; background: var(--surface2) var(--bg-image) center/cover no-repeat; display: flex; align-items: center; justify-content: center; }
     .modal-img img { width: 100%; height: 100%; object-fit: cover; }
+    .spin-animation img {
+      animation: capSpin 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    } /* Easter Egg: Dynamic Random Spin Animation */
+    @keyframes capSpin {
+      to { transform: rotate(var(--spin-deg, 720deg)); }
+    }
+    .victory-pulse img {
+      animation: winPulse 0.6s ease-out;
+    }
+    @keyframes winPulse {
+      0% { transform: rotate(var(--final-deg)) scale(1); filter: drop-shadow(0 0 0 transparent); }
+      40% { transform: rotate(var(--final-deg)) scale(1.25); filter: drop-shadow(0 0 15px var(--accent)); }
+      100% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 0 transparent); }
+    }
     .modal-img .placeholder { font-size: 5rem; opacity: .15; }
     .modal-info { padding: 1.2rem 1.4rem 1.4rem; }
     .modal-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .04em; margin-bottom: .5rem; }
@@ -128,7 +170,30 @@
       </button>
       <button class="toggle-btn" id="randomBtn" title="Capsule aléatoire">🎲 Aléatoire</button>
       <span class="result-meta" id="resultMeta"></span>
+      <div class="bg-picker-container">
+        <button class="toggle-btn" id="bgPickerBtn">Choisir le fond</button>
+        <div class="bg-preview-window" id="bgPreviewWindow">
+          <div class="bg-option" data-bg="fabric.jpg">
+            <div class="bg-option-img" style="background-image: url('public/backgrounds/dark_fabric.jpg');"></div>
+            <div class="bg-option-label">Tissu</div>
+          </div>
+          <div class="bg-option" data-bg="wood.jpg">
+            <div class="bg-option-img" style="background-image: url('public/backgrounds/dark_wood.jpg');"></div>
+            <div class="bg-option-label">Bois</div>
+          </div>
+          <div class="bg-option" data-bg="marble.jpg">
+            <div class="bg-option-img" style="background-image: url('public/backgrounds/dark_marble.jpg');"></div>
+            <div class="bg-option-label">Marbre</div>
+          </div>
+          <div class="bg-option" data-bg="leather.jpg">
+            <div class="bg-option-img" style="background-image: url('public/backgrounds/dark_leather.jpg');"></div>
+            <div class="bg-option-label">Cuir</div>
+          </div>
+        </div>
+      </div>
+      </div>
     </div>
+    
     <div class="gallery" id="gallery"></div>
   </main>
   <footer><p>Caps Collection &nbsp;·&nbsp; <span id="footerYear"></span></p></footer>
@@ -160,10 +225,10 @@
       const cleanName = name ? name.replace(/\.(jpg|png)$/i, '') : 'missing_caps';
       const loading = lazy ? ' loading="lazy"' : '';
 
-      return `<img src="public/images/${cleanName}.jpg" alt="${alt || 'Image manquante'}"${loading} 
-        onerror="this.src.endsWith('${cleanName}.jpg') ? this.src='public/images/${cleanName}.png' : 
-                 this.src.endsWith('${cleanName}.png') ? this.src='public/images/missing_caps.jpg' : 
-                 this.src.endsWith('missing_caps.jpg') ? this.src='public/images/missing_caps.png' : this.onerror=null;" />`;
+      return `<img src="public/images/${cleanName}.png" alt="${alt || 'Image manquante'}"${loading} 
+        onerror="this.src.endsWith('${cleanName}.png') ? this.src='public/images/${cleanName}.jpg' : 
+                 this.src.endsWith('${cleanName}.jpg') ? this.src='public/images/missing_caps.png' : 
+                 this.src.endsWith('missing_caps.png') ? this.src='public/images/missing_caps.jpg' : this.onerror=null;" />`;
     }
     async function loadData() {
       try {
@@ -309,7 +374,49 @@
       const modalCountry = document.getElementById('modalCountry');
       modalCountry.textContent = cap.country_code ? `${countryFlag(cap.country_code)} ${cap.country}` : '';
       modalCountry.style.display = cap.country_code ? '' : 'none';
-      document.getElementById('modalImg').innerHTML = imgTag(cap.image, escHtml(cap.name), false);
+      
+      const modalImgContainer = document.getElementById('modalImg');
+      modalImgContainer.innerHTML = imgTag(cap.image, escHtml(cap.name), false);
+      
+      // Caps game
+      let currentAngle = 0;
+      modalImgContainer.classList.remove('spin-animation');
+      modalImgContainer.style.removeProperty('--spin-deg');
+        const capImg = modalImgContainer.querySelector('img');
+      if (capImg) capImg.style.removeProperty('transform');
+
+      modalImgContainer.onclick = () => {
+        if (modalImgContainer.classList.contains('spin-animation') || modalImgContainer.classList.contains('victory-pulse')) return;
+        const extraDegrees = Math.floor(Math.random() * (1440 - 720 + 1)) + 720;
+        currentAngle += extraDegrees;
+        modalImgContainer.style.setProperty('--spin-deg', `${currentAngle}deg`);
+        modalImgContainer.classList.add('spin-animation');
+        
+        // After 800ms, keep it exactly where it landed 
+        setTimeout(() => {
+          modalImgContainer.classList.remove('spin-animation');
+          if (capImg) {
+            capImg.style.transform = `rotate(${currentAngle}deg)`;
+          }
+
+          // --- VICTORY CHECK ---
+          const remainder = currentAngle % 360
+          // Checking if it's within +- 18 (10%)
+          if (remainder <= 18 || remainder >= 338) {
+            modalImgContainer.style.setProperty('--final-deg', `${currentAngle}deg`);
+            // Fire victory pulse
+            modalImgContainer.classList.add('victory-pulse');
+            currentAngle = 0;
+            if (capImg) {
+              capImg.style.transform = 'rotate(0deg)';
+            }
+            setTimeout(() => {
+              modalImgContainer.classList.remove('victory-pulse');
+            }, 600);
+          }
+        }, 800);
+      };
+
       document.getElementById('modalBackdrop').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -370,14 +477,70 @@
       renderGallery();
     });
 
+    // Automatic background as a function of theme
+    function applyBackground(baseName) {
+      const currentTheme = document.documentElement.dataset.theme || 'dark';
+      const finalFileName = `${currentTheme}_${baseName}`;
+      
+      document.documentElement.style.setProperty('--bg-image', `url('public/backgrounds/${finalFileName}')`);
+      localStorage.setItem('caps-bg-base', baseName);
+      
+      const options = document.querySelectorAll('.bg-option');
+      options.forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.bg === baseName);
+        const imgEl = opt.querySelector('.bg-option-img');
+        if (imgEl) {
+          imgEl.style.backgroundImage = `url('public/backgrounds/${currentTheme}_${opt.dataset.bg}')`;
+        }
+      });
+    }
+
+    function applyTheme(t) { 
+      document.documentElement.dataset.theme = t; 
+      themeBtn.textContent = t === 'dark' ? '☀️' : '🌙'; 
+      localStorage.setItem('caps-theme', t); 
+      
+      // Keep background filename synced with theme shift
+      const currentBg = localStorage.getItem('caps-bg-base') || 'fabric.jpg';
+      applyBackground(currentBg);
+    }
+
+    // Button listeners
     const themeBtn = document.getElementById('themeBtn');
-    function applyTheme(t) { document.documentElement.dataset.theme = t; themeBtn.textContent = t === 'dark' ? '☀️' : '🌙'; localStorage.setItem('caps-theme', t); }
     themeBtn.addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
-    const saved = localStorage.getItem('caps-theme');
-    if (saved) applyTheme(saved);
+    
+    // Background window toggle controls
+    const bgPickerBtn = document.getElementById('bgPickerBtn');
+    const bgPreviewWindow = document.getElementById('bgPreviewWindow');
+    const bgOptions = document.querySelectorAll('.bg-option');
+    
+    bgPickerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      bgPreviewWindow.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!bgPreviewWindow.contains(e.target) && e.target !== bgPickerBtn) {
+        bgPreviewWindow.classList.remove('show');
+      }
+    });
+
+    bgOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        applyBackground(option.dataset.bg);
+        bgPreviewWindow.classList.remove('show');
+      });
+    });
+
+    // Initialization rules on load
+    const savedTheme = localStorage.getItem('caps-theme') || 'dark';
+    applyTheme(savedTheme);
+
+    const savedBgBase = localStorage.getItem('caps-bg-base') || 'fabric.jpg';
+    applyBackground(savedBgBase);
+
 
     function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-    function typeEmoji() { return '🪙'; }
     
     function countryFlag(code) {
       const exceptions = {
