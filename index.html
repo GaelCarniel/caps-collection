@@ -61,9 +61,10 @@
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: transform var(--trans), border-color var(--trans), box-shadow var(--trans); animation: fadeIn .25s ease both; }
     .card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow); }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .card-img { width: 100%; aspect-ratio: 1; background: var(--surface2); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .card-img { width: 100%; aspect-ratio: 1; background: var(--surface2) url('public/backgrounds/background.jpeg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
     .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
-    .card:hover .card-img img { transform: scale(1.06); }
+    .card:hover .card-img img { transform: scale(1.16);}
     .card-img .placeholder { font-size: 2.8rem; opacity: .18; user-select: none; }
     .card-body { padding: .7rem .8rem .75rem; }
     .card-name { font-size: .88rem; font-weight: 500; line-height: 1.3; margin-bottom: .45rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -80,7 +81,7 @@
     .modal-backdrop.open { display: grid; }
     .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; max-width: min(480px, 92vw); width: 100%; overflow: hidden; animation: modalIn .2s ease; }
     @keyframes modalIn { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: scale(1); } }
-    .modal-img { width: 100%; aspect-ratio: 1; background: var(--surface2); display: flex; align-items: center; justify-content: center; }
+    .modal-img { width: 100%; aspect-ratio: 1; background: var(--surface2) url('public/backgrounds/background.jpeg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; }
     .modal-img img { width: 100%; height: 100%; object-fit: cover; }
     .modal-img .placeholder { font-size: 5rem; opacity: .15; }
     .modal-info { padding: 1.2rem 1.4rem 1.4rem; }
