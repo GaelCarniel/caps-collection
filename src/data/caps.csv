@@ -1,65 +1,65 @@
-Nom;Quantité;Type;Photo;Pays;Pays_code
-Heineken;32;Bière;heineken.jpg;Pays-Bas;NL
-Heineken originale;1;Bière;heineken_original.jpg;Pays-Bas;NL
-Leffe;7;Bière;leffe_original.jpg;Belgique;BE
-Leffe 0.0%;1;Bière;leffe_zero.jpg;Belgique;BE
-Grimbergen;6;Bière;grimbergen_original.jpg;Belgique;BE
-Grimbergen fruits rouges;3;Bière;grimbergen_rouge.jpg;Belgique;BE
-Grimbergen cerise;5;Bière;grimbergen_cerise.jpg;Belgique;BE
-Budweiser;8;Bière;bud_original.jpg;États-Unis;US
-San Miguel;3;Bière;san_miguel.jpg;Espagne;ES
-La Muette;4;Bière;la_muette.jpg;France;FR
-El Aguila;5;Bière;el_alguila.jpg;Espagne;ES
-Mélusine;2;Bière;melusine.jpg;France;FR
-Chouffe;2;Bière;chouffe_original.jpg;Belgique;BE
-Chouffe rouge;1;Bière;chouffe_rouge.jpg;Belgique;BE
-Desperados Violette;2;Bière;desperados_violette.jpg;France;FR
-Desperados Bleue;2;Bière;desperados_bleue.jpg;France;FR
-Desperados Sunlight;1;Bière;desperados_sunlight.jpg;France;FR
-Gouyasse;1;Bière;gouyasse.jpg;Belgique;BE
-Sol;1;Bière;sol.jpg;Mexique;MX
-Coors;1;Bière;coors.jpg;États-Unis;US
-Miller;1;Bière;miller.jpg;États-Unis;US
-Vedett IPA;1;Bière;extra_vedett_ipa.jpg;Belgique;BE
-Smirnoff;1;Bière;smirnoff.jpg;Russe;RU
-Beck’s;1;Bière;becks.jpg;Allemagne;DE
-Biere des amis;1;Bière;biere_des_amis.jpg;Belgique;BE
-Monte Carlo Beer Blanche;1;Bière;monte_carlo_blanche.jpg;Monaco;MC
-Monte Carlo Beer Rouge;1;Bière;monte_carlo_rouge.jpg;Monaco;MC
-Peroni ;1;Bière;peroni.jpg;Italie;IT
-Trappist Westmale;1;Bière;trappist_westmale_extra.jpg;Belgique;BE
-Pilsner Urquell (PLZEN);1;Bière;pilsner_urquell.jpg;République Tchèque;CZ
-Brewdog Wingman noire;1;Bière;brewdog_wingman.jpg;Écosse;SCO
-La débauche;1;Bière;la_debauche.jpg;France;FR
-Gouden Carolus noire;1;Bière;gouden_carolus_noire.jpg;Belgique;BE
-Averbode ;1;Bière;averbode.jpg;Belgique;BE
-La mordue;1;Cidre;la_mordue.jpg;France;FR
-Boylan;1;Soda;boylan.jpg;Irlande;IE
-L’excuse de Mauvezin (Gers);1;Bière;lexcuse_mauvezin.jpg;France;FR
-Birra Moretti bronze;1;Bière;birra_moretti_bronze.jpg;Italie;IT
-Ninkasi Blanche;1;Bière;ninkasi_blanche_turquoise.jpg;France;FR
-Perlembourg 0.0%;2;Bière;perlembourg_zero.jpg;France;FR
-La Goudale;1;Bière;goudale.jpg;France;FR
-Brasserie Dulion;1;Bière;dulion.jpg;France;FR
-Asahi Super Dry;1;Bière;asahi_super_dry.jpg;Japon;JP
-Britvic;1;Soda;britvic.jpg;Angleterre;ENG
-Brown Bear;1;Bière;brown_bear.jpg;Irlande;IE
-Coca Cola orginal;2;Soda;coca_cola_original.jpg;États-Unis;US
-Coca Cola zero;3;Soda;coca_cola_zero.jpg;États-Unis;US
-Diet Coke;2;Soda;diet_coke.jpg;États-Unis;US
-Falling Apple;1;Cidre;falling_apple.jpg;Irlande;IE
-Fanta;2;Soda;fanta.jpg;États-Unis;US
-Heineken 0.0%;1;Bière;heineken_zero.jpg;Pays-Bas;NL
-MacArdle’s;1;Bière;macardles.jpg;Irlande;IE
-Parisis;1;Bière;parisis.jpg;France;FR
-Pepsi;2;Soda;pepsi.jpg;États-Unis;US
-Kopparberg fraise-citron;3;Cidre;premium_kopparberg_fraise_citron.jpg;Suède;SE
-Kopparberg framboise-cassis;3;Cidre;premium_kopparberg_framboise_cassis.jpg;Suède;SE
-Rye River session IPA;1;Bière;rye_river_session_ipa.jpg;Irlande;IE
-Rockshore;1;Cidre;rockshore_apple_cider.jpg;Irlande;IE
-Schweppes;3;Soda;schweppes.jpg;Suisse;CH
-Sprite;2;Soda;sprite.jpg;Allemagne;DE
-Timothy Taylor’s Landlord;1;Bière;timothy_taylors_landlord.jpg;Angleterre;ENG
-Tyskie;1;Bière;tyskie.jpg;Pologne;PL
-Guinness originale;1;Bière;guinness_original.jpg;Irlande;IE
-Karpackie;1;Bière;karpackie_premium.jpg;Pologne;PL
+Nom;Quantité;Type;Photo;Pays;Pays_code;Description
+Heineken;32;Bière;heineken.jpg;Pays-Bas;NL;Fondée en 1864 à Amsterdam (Pays-Bas) par Gerard Adriaan Heineken, qui racheta la brasserie De Hooiberg. Devenue l'une des marques de bière les plus vendues au monde.
+Heineken originale;1;Bière;heineken_original.jpg;Pays-Bas;NL;Version emblématique de la lager Heineken, brassée depuis 1864 à Amsterdam selon la recette originale, notamment grâce à la levure « A-yeast » développée en 1886.
+Leffe;7;Bière;leffe_original.jpg;Belgique;BE;Bière d'abbaye dont l'histoire remonte à 1240, quand les chanoines de l'abbaye Notre-Dame de Leffe (fondée en 1152 à Dinant, Belgique) commencèrent à brasser. La production commerciale moderne reprend en 1952, aujourd'hui brassée à Louvain par AB InBev.
+Leffe 0.0%;1;Bière;leffe_zero.jpg;Belgique;BE;Version sans alcool de la Leffe Blonde, lancée en 2019-2020 à Louvain (Belgique) par AB InBev, dans la lignée des bières sans alcool inspirées de l'abbaye Notre-Dame de Leffe fondée en 1152 à Dinant.
+Grimbergen;6;Bière;grimbergen_original.jpg;Belgique;BE;Bière d'abbaye dont les origines remontent à l'abbaye de Grimbergen (Belgique), fondée en 1128. Commercialisée modernement depuis 1958 en partenariat avec la brasserie Maes, aujourd'hui produite par le groupe Carlsberg.
+Grimbergen fruits rouges;3;Bière;grimbergen_rouge.jpg;Belgique;BE;Variante fruitée aux arômes de fraise, canneberge et sureau, inspirée de la tradition brassicole de l'abbaye de Grimbergen fondée en 1128 en Belgique. Brassée par Alken-Maes (groupe Carlsberg).
+Grimbergen cerise;5;Bière;grimbergen_cerise.jpg;Belgique;BE;Bière d'abbaye aromatisée à la cerise, issue de la tradition de l'abbaye de Grimbergen (fondée en 1128), brassée par Alken-Maes dans le cadre de la gamme fruitée Grimbergen.
+Budweiser;8;Bière;bud_original.jpg;États-Unis;US;Lager américaine lancée en 1876 à Saint-Louis (Missouri) par Adolphus Busch et Carl Conrad au sein de la brasserie Anheuser-Busch, fondée en 1852. Aujourd'hui propriété d'AB InBev.
+San Miguel;3;Bière;san_miguel.jpg;Espagne;ES;Créée le 29 septembre 1890 à Manille (Philippines) par Enrique María Barretto sous le nom La Fábrica de Cerveza San Miguel, première brasserie d'Asie du Sud-Est. Produite en Espagne depuis 1957 à Lérida, au sein du groupe Mahou-San Miguel.
+La Muette;4;Bière;la_muette.jpg;France;FR;Bière artisanale française. Nom faisant référence à un château ou un lieu local. Brasserie indépendante française (informations détaillées non disponibles publiquement).
+El Aguila;5;Bière;el_alguila.jpg;Espagne;ES;Fondée le 9 mai 1900 à Madrid (Espagne) par Augusto Comas y Blanco, commercialisée à partir du 1er avril 1903. Relancée en 2019 par le groupe Heineken après des années d'absence du marché.
+Mélusine;2;Bière;melusine.jpg;France;FR;Brasserie artisanale française dont le nom évoque la fée Mélusine du folklore poitevin. Produite dans l'ouest de la France (Nouvelle-Aquitaine), marque indépendante.
+Chouffe;2;Bière;chouffe_original.jpg;Belgique;BE;Bière blonde belge (8% ABV) créée le 27 août 1982 par Pierre Gobron et Chris Bauweraerts dans le village d'Achouffe (Ardennes belges). Première microbrasserie artisanale légale en Belgique, aujourd'hui propriété de Duvel Moortgat.
+Chouffe rouge;1;Bière;chouffe_rouge.jpg;Belgique;BE;Variante rouge de la gamme Chouffe de la Brasserie d'Achouffe, fondée en 1982 dans le village d'Achouffe (Belgique) par Pierre Gobron et Chris Bauweraerts, dans les Ardennes belges.
+Desperados Violette;2;Bière;desperados_violette.jpg;France;FR;Variante de la gamme Desperados, lager aromatisée à la tequila créée en 1995 par la Brasserie Fischer à Schiltigheim (Alsace, France), achetée par Heineken en 1996.
+Desperados Bleue;2;Bière;desperados_bleue.jpg;France;FR;Variante de la gamme Desperados, lager aromatisée originellement à la tequila, créée en 1995 par la Brasserie Fischer à Schiltigheim (Alsace, France), aujourd'hui propriété de Heineken.
+Desperados Sunlight;1;Bière;desperados_sunlight.jpg;France;FR;Variante estivale de la gamme Desperados, fondée en 1995 par la Brasserie Fischer à Schiltigheim (Alsace, France), première bière aromatisée à la tequila au monde, désormais produite par Heineken.
+Gouyasse;1;Bière;gouyasse.jpg;Belgique;BE;Bière belge artisanale dont le nom fait référence aux géants (Gouyasse = Goliath) des processions folkloriques belges. Brasserie locale belge.
+Sol;1;Bière;sol.jpg;Mexique;MX;Lager mexicaine brassée depuis 1899 à Orizaba (Veracruz, Mexique) dans la brasserie El Salto del Agua. La légende raconte qu'un rayon de soleil inspira son nom lors de la première mise en bouteille. Aujourd'hui propriété de Heineken.
+Coors;1;Bière;coors.jpg;États-Unis;US;Brassée depuis 1873 à Golden (Colorado, États-Unis) par Adolph Coors et Jacob Schueler. Connue pour utiliser l'eau de source des Rocheuses, aujourd'hui filiale de Molson Coors.
+Miller;1;Bière;miller.jpg;États-Unis;US;Fondée en 1855 à Milwaukee (Wisconsin, États-Unis) par l'immigrant allemand Frederick Miller, qui racheta la Plank Road Brewery. Aujourd'hui propriété de Molson Coors.
+Vedett IPA;1;Bière;extra_vedett_ipa.jpg;Belgique;BE;"India Pale Ale belge de la Brasserie Duvel Moortgat, fondée en 1871 à Puurs-Breendonk (Belgique). La gamme Vedett existe depuis 1945 ; la version IPA a été lancée vers 2014."
+Smirnoff;1;Bière;smirnoff.jpg;Russe;RU;Bien que Smirnoff soit principalement connu comme une vodka russe fondée à Moscou en 1864 par Piotr Arsenievitch Smirnov, la référence ici est probablement à une bière de marque Smirnoff Ice, une boisson maltée alcoolisée lancée en 1999.
+Beck’s;1;Bière;becks.jpg;Allemagne;DE;Bière brassée depuis le 27 juin 1873 à Brême (Allemagne) par Heinrich Beck, Lüder Rutenberg et Thomas May sous le nom Kaiser-Brauerei Beck & May. Aujourd'hui propriété d'AB InBev.
+Biere des amis;1;Bière;biere_des_amis.jpg;Belgique;BE;Bière belge conviviale, produite par une brasserie indépendante belge. Le nom évoque la tradition de partage propre à la culture brassicole belge.
+Monte Carlo Beer Blanche;1;Bière;monte_carlo_blanche.jpg;Monaco;MC;Bière blanche produite à Monaco, principalement connue pour son origine monégasque et son positionnement premium lié à l'image de la Principauté.
+Monte Carlo Beer Rouge;1;Bière;monte_carlo_rouge.jpg;Monaco;MC;Bière rousse/rouge produite à Monaco, dans la tradition des bières premium de la Principauté. La capsule rouge désigne la couleur de la bière, non son style (pas nécessairement une stout).
+Peroni ;1;Bière;peroni.jpg;Italie;IT;Fondée en 1846 par Francesco Peroni à Vigevano (Lombardie, Italie). Déplacée à Rome en 1864 par son fils Giovanni. Connue pour son Nastro Azzurro lancé en 1963. Aujourd'hui propriété d'Asahi Breweries.
+Trappist Westmale;1;Bière;trappist_westmale_extra.jpg;Belgique;BE;"Bière trappiste brassée depuis le 1er août 1836 par les moines de l'abbaye de Westmalle (province d'Anvers, Belgique). Première abbaye trappiste à brasser de la bière ; la Tripel a été créée en 1934."
+Pilsner Urquell (PLZEN);1;Bière;pilsner_urquell.jpg;République Tchèque;CZ;"Première lager dorée au monde, brassée le 5 octobre 1842 à Plzeň (Bohême, République tchèque) par le brasseur bavarois Josef Groll. Origine du style Pilsner ; aujourd'hui propriété d'Asahi."
+Brewdog Wingman noire;1;Bière;brewdog_wingman.jpg;Écosse;SCO;Bière de la gamme BrewDog, fondée en 2007 à Fraserburgh (Aberdeenshire, Écosse) par James Watt et Martin Dickie. La Wingman a été lancée lors d'une année notable de la brasserie.
+La débauche;1;Bière;la_debauche.jpg;France;FR;Brasserie artisanale française, probablement basée dans la région Auvergne-Rhône-Alpes. Marque indépendante française proposant des bières artisanales.
+Gouden Carolus noire;1;Bière;gouden_carolus_noire.jpg;Belgique;BE;Bière de la Brasserie Het Anker à Malines (Belgique), fondée en 1471. La gamme Gouden Carolus, lancée commercialement en 1959, rend hommage à l'Empereur Charles Quint, élevé à Malines.
+Averbode ;1;Bière;averbode.jpg;Belgique;BE;Bière d'abbaye relancée en 2014 par les chanoines de l'Abbaye d'Averbode (fondée vers 1134 à Scherpenheuvel-Zichem, Belgique), brassée en partenariat avec la Brasserie Huyghe. L'abbaye brassait de la bière du XIVe siècle jusqu'en 1917.
+La mordue;1;Cidre;la_mordue.jpg;France;FR;Cidre artisanal français, probablement issu d'une cidrerie indépendante de Normandie ou de Bretagne, régions traditionnellement productrices de cidre en France.
+Boylan;1;Soda;boylan.jpg;Irlande;IE;Bien que référencé comme irlandais dans la liste, Boylan est une marque américaine de sodas artisanaux fondée en 1891 à Paterson (New Jersey, États-Unis) par William Boylan, pharmacien.
+L’excuse;1;Bière;lexcuse_mauvezin.jpg;France;FR;Bière artisanale produite dans le Gers (Occitanie, France), dans la région de Mauvezin. Brasserie locale ou microbrasserie du terroir gascon.
+Birra Moretti bronze;1;Bière;birra_moretti_bronze.jpg;Italie;IT;Variante de la gamme Birra Moretti, fondée en 1859 à Udine (Frioul, Italie) par Luigi Moretti, aujourd’hui produite par Heineken.
+Ninkasi Blanche;1;Bière;ninkasi_blanche_turquoise.jpg;France;FR;Bière blanche de la Brasserie Ninkasi, fondée en 1997 à Lyon (quartier de Gerland) par Christophe Fargier, inspiré par les microbrasseries américaines. Brassée à Tarare (Rhône) depuis 2012.
+Perlembourg 0.0%;2;Bière;perlembourg_zero.jpg;France;FR;Bière sans alcool française de la marque Perlembourg, produite pour les grandes surfaces françaises. Marque de distributeur ou brasserie indépendante française.
+La Goudale;1;Bière;goudale.jpg;France;FR;Bière de garde brassée depuis 1994 à Douai (Nord, France) par Les Brasseurs de Gayant, fondés en 1919. Aujourd'hui produite à Arques (Pas-de-Calais) par la Brasserie Goudale. Son nom évoque les « bonnes ales » locales du XIVe siècle.
+Brasserie Dulion;1;Bière;dulion.jpg;France;FR;Microbrasserie artisanale française, probablement issue d'un projet de brassage local ou régional. Informations publiques limitées disponibles.
+Asahi Super Dry;1;Bière;asahi_super_dry.jpg;Japon;JP;Lancée le 17 mars 1987 à Tokyo (Japon) par Asahi Breweries (fondée en 1889 à Osaka sous le nom Osaka Beer Brewing Company). Première lager sèche japonaise (« karakuchi »), elle révolutionna le marché brassicole nippon.
+Britvic;1;Soda;britvic.jpg;Angleterre;ENG;Marque britannique de sodas et jus de fruits fondée en 1938 à Chelmsford (Essex, Angleterre). Britvic est aujourd'hui l'un des principaux producteurs de boissons sans alcool du Royaume-Uni.
+Brown Bear;1;Bière;brown_bear.jpg;Irlande;IE;Bière artisanale irlandaise, peu d’information disponible à ce jour.
+Coca Cola orginal;2;Soda;coca_cola_original.jpg;États-Unis;US;Inventée le 8 mai 1886 à Atlanta (Géorgie, États-Unis) par le pharmacien Dr. John Pemberton. Vendue pour la première fois à la pharmacie Jacobs', à 5 cents le verre. Aujourd'hui la boisson gazeuse la plus vendue au monde.
+Coca Cola zero;3;Soda;coca_cola_zero.jpg;États-Unis;US;Version sans sucre du Coca-Cola originale (créée en 1886 à Atlanta), lancée en 2005 sous le nom Coca-Cola Zero pour offrir le goût du Coca original sans calories.
+Diet Coke;2;Soda;diet_coke.jpg;États-Unis;US;Boisson gazeuse sans calorie lancée le 9 juillet 1982 par The Coca-Cola Company (fondée en 1892 à Atlanta, Géorgie). Première reformulation significative de la marque Coca-Cola.
+Falling Apple;1;Cidre;falling_apple.jpg;Irlande;IE;Cidre irlandais artisanal. Probablement issu d'une cidrerie indépendante irlandaise, dans la tradition du cidre irlandais.
+Fanta;2;Soda;fanta.jpg;États-Unis;US;Créée en 1940 en Allemagne par Coca-Cola Deutschland (dirigé par Max Keith) à Essen, en raison de l'embargo américain sur les matières premières pendant la Seconde Guerre mondiale. La formule à l'orange connue aujourd'hui a été développée en Italie en 1955.
+Heineken 0.0%;1;Bière;heineken_zero.jpg;Pays-Bas;NL;Version sans alcool de Heineken, lancée en mai 2017 aux Pays-Bas (Amsterdam) après deux ans de développement. Première grande marque mondiale à proposer une bière sans alcool de ce calibre, aujourd'hui numéro 1 mondial du segment.
+MacArdle’s;1;Bière;macardles.jpg;Irlande;IE;Bière irlandaise brassée à Dundalk (comté de Louth, Irlande). MacArdle's Ale est une marque historique irlandaise, aujourd'hui produite par Diageo dans le cadre du portefeuille Guinness.
+Parisis;1;Bière;parisis.jpg;France;FR;Bière artisanale française brassée à Gonesse ou dans la région parisienne (Île-de-France). Brasserie indépendante valorisant le terroir francilien.
+Pepsi;2;Soda;pepsi.jpg;États-Unis;US;Inventée en 1893 à New Bern (Caroline du Nord, États-Unis) par le pharmacien Caleb Bradham sous le nom Brad's Drink, rebaptisée Pepsi-Cola en 1898. Entreprise fondée en 1902. Aujourd'hui produite par PepsiCo.
+Kopparberg fraise-citron;3;Cidre;premium_kopparberg_fraise_citron.jpg;Suède;SE;Cidre aromatisé fraise-citron de Kopparbergs Bryggeri, fondée en 1882 à Kopparberg (Suède) par 36 brasseurs locaux. Relancée en 1994, la gamme de cidres fruités s'est imposée mondialement.
+Kopparberg framboise-cassis;3;Cidre;premium_kopparberg_framboise_cassis.jpg;Suède;SE;Cidre aromatisé framboise-cassis de Kopparbergs Bryggeri, fondée en 1882 à Kopparberg (Suède). L'une des saveurs de la gamme de cidres fruités qui a conquis plus de 30 pays.
+Rye River session IPA;1;Bière;rye_river_session_ipa.jpg;Irlande;IE;Session IPA de la Rye River Brewing Company, fondée en novembre 2013 à Celbridge (comté de Kildare, Irlande) par Tom Cronin, Niall Phelan et Alan Wolfe. Élue meilleure brasserie mondiale aux World Beer Awards 2019.
+Rockshore;1;Cidre;rockshore_apple_cider.jpg;Irlande;IE;Cidre irlandais de la marque Rockshore, lancé par Diageo Ireland (groupe propriétaire de Guinness). Produit en Irlande, à base de pommes locales.
+Schweppes;3;Soda;schweppes.jpg;Suisse;CH;Fondée en 1783 à Genève (Suisse) par l'horloger allemand Jacob Schweppe, qui inventa le premier procédé commercial de carbonatation de l'eau. Première boisson gazeuse au monde.
+Sprite;2;Soda;sprite.jpg;Allemagne;DE;Développée en 1959 en Allemagne de l'Ouest (Cologne/Essen) sous le nom Fanta Klare Zitrone, lancée aux États-Unis en 1961 sous le nom Sprite par The Coca-Cola Company (fondée en 1892 à Atlanta) pour concurrencer le 7 Up.
+Timothy Taylor’s Landlord;1;Bière;timothy_taylors_landlord.jpg;Angleterre;ENG;"Pale ale brassée depuis 1858 à Keighley (West Yorkshire, Angleterre) par Timothy Taylor. La Landlord a été créée en 1952 ; c'est aujourd'hui la cask ale numéro 1 au Royaume-Uni, la bière la plus primée de sa catégorie."
+Tyskie;1;Bière;tyskie.jpg;Pologne;PL;Lager brassée en continu depuis 1629 à Tychy (Silésie, Pologne) par la famille Promnitz, l'une des plus anciennes brasseries d'Europe. Aujourd'hui propriété d'Asahi, produite par Kompania Piwowarska.
+Guinness originale;1;Bière;guinness_original.jpg;Irlande;IE;Stout emblématique brassée depuis 1759 à Dublin (Irlande) par Arthur Guinness, qui signa un bail de 9 000 ans pour la Brasserie St. James's Gate. Devenue la plus grande brasserie mondiale au XIXe siècle. Aujourd'hui propriété de Diageo.
+Karpackie;1;Bière;karpackie_premium.jpg;Pologne;PL;Lager polonaise de la région des Carpates, produite en Pologne. Bière régionale polonaise, probablement liée à une brasserie de Silésie ou de Pologne du sud.

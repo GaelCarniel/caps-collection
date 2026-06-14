@@ -109,6 +109,16 @@
     .modal-backdrop.open { display: grid; }
     .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; max-width: min(480px, 92vw); width: 100%; overflow: hidden; animation: modalIn .2s ease; }
     @keyframes modalIn { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: scale(1); } }
+    .modal-backdrop.open {     /* Backdrop grid align items at the top instead of centering them */
+      display: grid; 
+      align-items: start; 
+      padding-top: 5vh;  
+      overflow-y: auto;  
+    }
+    .modal { 
+      position: relative; 
+      transform-origin: center center; 
+    }
     .modal-img { width: 100%; aspect-ratio: 1; background: var(--surface2) var(--bg-image) center/cover no-repeat; display: flex; align-items: center; justify-content: center; }
     .modal-img img { width: 100%; height: 100%; object-fit: cover; }
     .spin-animation img {
@@ -210,6 +220,7 @@
           <span class="modal-qty" id="modalQty"></span>
           <span class="modal-qty" id="modalCountry"></span>
         </div>
+        <div id="modalDesc" style="font-size: 0.9rem; margin-top: 1rem; color: var(--text); line-height: 1.4; opacity: 0.9; text-align: justify;"></div>
         <button class="modal-close" id="modalClose">Fermer</button>
       </div>
     </div>
@@ -278,9 +289,8 @@
 
     function parseCSV(text) {
       const lines = text.trim().split('\n').filter(l => l.trim());
-      // Skip header row (Nom,Quantité,Type,Photo, Pays, Code du Pays)
       return lines.slice(1).map((line, i) => {
-        const [nom, quantite, type, photo, pays, code] = line.split(';').map(v => v.trim());
+        const [nom, quantite, type, photo, pays, code, description] = line.split(';').map(v => v.trim());
         return {
           id:       i + 1,
           name:     nom     || '',
@@ -289,6 +299,7 @@
           image:    photo   || '',
           country:  pays    || '',
           country_code: code|| '',
+          description: description || '' 
         };
       });
     }
@@ -375,6 +386,19 @@
       modalCountry.textContent = cap.country_code ? `${countryFlag(cap.country_code)} ${cap.country}` : '';
       modalCountry.style.display = cap.country_code ? '' : 'none';
       
+      // Description
+      const modalDesc = document.getElementById('modalDesc');
+      if (cap.description) {
+        modalDesc.innerHTML = `
+          <div>${escHtml(cap.description)}</div>
+          <div style="font-size: 80%; opacity: 0.3; text-align: center; margin-top: 1rem; font-style: italic;">
+            Description générée par Claude Sonnet 4.6 - informations non vérifiées
+          </div>
+        `;
+      } else {
+        modalDesc.textContent = '';
+      }
+
       const modalImgContainer = document.getElementById('modalImg');
       modalImgContainer.innerHTML = imgTag(cap.image, escHtml(cap.name), false);
       
