@@ -1,6 +1,6 @@
 # 🍺 Cap Collection
 
-A personal beer cap inventory — fast, static, no backend.
+A personal beer cap inventory — fast, static, no backend. You may visit at the website at https://carnielgael.github.io/caps-collection/.
 
 ## Project structure
 
